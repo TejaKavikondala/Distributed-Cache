@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  cache-node-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "50051:50051"
+      - "9091:9090"
+    environment:
+      - PORT=:50051
+      - METRICS_PORT=:9090
+
+  cache-node-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "50052:50052"
+      - "9092:9090"
+    environment:
+      - PORT=:50052
+      - METRICS_PORT=:9090
+
+  cache-node-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    ports:
+      - "50053:50053"
+      - "9093:9090"
+    environment:
+      - PORT=:50053
+      - METRICS_PORT=:9090

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package cache;
+
+option go_package = "github.com/TejaKavikondala/Distributed-Cache/pkg/cache";
+
+service CacheService {
+  rpc Set(SetRequest) returns (SetResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc HealthCheck(HealthRequest) returns (HealthResponse);
+}
+
+message SetRequest {
+  string key = 1;
+  bytes value = 2;
+  int32 ttl_seconds = 3;
+}
+
+message SetResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetRequest {
+  string key = 1;
+}
+
+message GetResponse {
+  bool found = 1;
+  bytes value = 2;
+}
+
+message DeleteRequest {
+  string key = 1;
+}
+
+message DeleteResponse {
+  bool success = 1;
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string status = 1;
+}

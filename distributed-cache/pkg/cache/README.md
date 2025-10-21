@@ -1,0 +1,1 @@
+This folder will contain generated Go code from proto/cache.proto after running protoc.
